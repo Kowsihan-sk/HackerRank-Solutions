@@ -19,27 +19,30 @@ int gcd(int a, int b) { return b ? gcd(b, a % b) : a; }
 
 int lcm(int a, int b) { return a * b / gcd(a, b); }
 
-int getTotalX(vector<int> a, vector<int> b) {
+int getTotalX(vector<int> a, vector<int> b)
+{
 
-     int count = 0;
-     int g = b[0];
-     int l = a[0];
+    int count = 0;
+    int g = b[0];
+    int l = a[0];
 
-     for(int i = 1; i < a.size(); i++){
-         l = lcm(l,a[i]);
-     }
-     for(int i=1; i < b.size(); i++){
-         g = gcd(g,b[i]);
-     }
-     int m = l;
-     int i = 1;
-     while(m <= g)
-     {
-         m = l * i;
-         if(g % m == 0)
-             count++;
-         i++;
-     }
+    for (int i = 1; i < a.size(); i++)
+    {
+        l = lcm(l, a[i]);
+    }
+    for (int i = 1; i < b.size(); i++)
+    {
+        g = gcd(g, b[i]);
+    }
+    int m = l;
+    int i = 1;
+    while (m <= g)
+    {
+        m = l * i;
+        if (g % m == 0)
+            count++;
+        i++;
+    }
 
     return count;
 }
@@ -64,7 +67,8 @@ int main()
 
     vector<int> arr(n);
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
+    {
         int arr_item = stoi(arr_temp[i]);
 
         arr[i] = arr_item;
@@ -77,7 +81,8 @@ int main()
 
     vector<int> brr(m);
 
-    for (int i = 0; i < m; i++) {
+    for (int i = 0; i < m; i++)
+    {
         int brr_item = stoi(brr_temp[i]);
 
         brr[i] = brr_item;
@@ -92,35 +97,37 @@ int main()
     return 0;
 }
 
-string ltrim(const string &str) {
+string ltrim(const string &str)
+{
     string s(str);
 
     s.erase(
         s.begin(),
-        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
-    );
+        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace))));
 
     return s;
 }
 
-string rtrim(const string &str) {
+string rtrim(const string &str)
+{
     string s(str);
 
     s.erase(
         find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
-        s.end()
-    );
+        s.end());
 
     return s;
 }
 
-vector<string> split(const string &str) {
+vector<string> split(const string &str)
+{
     vector<string> tokens;
 
     string::size_type start = 0;
     string::size_type end = 0;
 
-    while ((end = str.find(" ", start)) != string::npos) {
+    while ((end = str.find(" ", start)) != string::npos)
+    {
         tokens.push_back(str.substr(start, end - start));
 
         start = end + 1;

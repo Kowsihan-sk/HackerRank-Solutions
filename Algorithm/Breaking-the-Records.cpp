@@ -5,23 +5,26 @@ using namespace std;
 vector<string> split_string(string);
 
 // Complete the breakingRecords function below.
-vector<int> breakingRecords(vector<int> scores) {
+vector<int> breakingRecords(vector<int> scores)
+{
     vector<int> MinMax(2);
-    long long min=0,max=0;
-        min=scores.at(0);
-        max=scores.at(0);
-            for(int i=1; i<scores.size(); i++){
-                if(scores.at(i)>max){
-                    max=scores.at(i);
-                    MinMax.at(0)++;
-                }
-                if(scores.at(i)<min){
-                    min=scores.at(i);
-                    MinMax.at(1)++;
-                }
-            }
+    long long min = 0, max = 0;
+    min = scores.at(0);
+    max = scores.at(0);
+    for (int i = 1; i < scores.size(); i++)
+    {
+        if (scores.at(i) > max)
+        {
+            max = scores.at(i);
+            MinMax.at(0)++;
+        }
+        if (scores.at(i) < min)
+        {
+            min = scores.at(i);
+            MinMax.at(1)++;
+        }
+    }
     return MinMax;
-
 }
 
 int main()
@@ -39,7 +42,8 @@ int main()
 
     vector<int> scores(n);
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
+    {
         int scores_item = stoi(scores_temp[i]);
 
         scores[i] = scores_item;
@@ -47,10 +51,12 @@ int main()
 
     vector<int> result = breakingRecords(scores);
 
-    for (int i = 0; i < result.size(); i++) {
+    for (int i = 0; i < result.size(); i++)
+    {
         fout << result[i];
 
-        if (i != result.size() - 1) {
+        if (i != result.size() - 1)
+        {
             fout << " ";
         }
     }
@@ -62,14 +68,16 @@ int main()
     return 0;
 }
 
-vector<string> split_string(string input_string) {
-    string::iterator new_end = unique(input_string.begin(), input_string.end(), [] (const char &x, const char &y) {
+vector<string> split_string(string input_string)
+{
+    string::iterator new_end = unique(input_string.begin(), input_string.end(), [](const char &x, const char &y) {
         return x == y and x == ' ';
     });
 
     input_string.erase(new_end, input_string.end());
 
-    while (input_string[input_string.length() - 1] == ' ') {
+    while (input_string[input_string.length() - 1] == ' ')
+    {
         input_string.pop_back();
     }
 
@@ -79,7 +87,8 @@ vector<string> split_string(string input_string) {
     size_t i = 0;
     size_t pos = input_string.find(delimiter);
 
-    while (pos != string::npos) {
+    while (pos != string::npos)
+    {
         splits.push_back(input_string.substr(i, pos - i));
 
         i = pos + 1;

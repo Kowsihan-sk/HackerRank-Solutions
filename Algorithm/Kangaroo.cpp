@@ -5,21 +5,24 @@ using namespace std;
 vector<string> split_string(string);
 
 // Complete the kangaroo function below.
-string kangaroo(int x1, int v1, int x2, int v2) {
-    if( v2 >= v1)
+string kangaroo(int x1, int v1, int x2, int v2)
+{
+    if (v2 >= v1)
         return "NO";
     int pos1 = x1, pos2 = x2;
 
-    while(pos1 <= pos2){
-        if(pos1 == pos2)
+    while (pos1 <= pos2)
+    {
+        if (pos1 == pos2)
             return "YES";
-        else{
+        else
+        {
             pos1 += v1;
             pos2 += v2;
         }
-        if(pos1 > pos2)
+        if (pos1 > pos2)
             return "NO";
-    }    
+    }
     return "NO";
 }
 
@@ -49,14 +52,16 @@ int main()
     return 0;
 }
 
-vector<string> split_string(string input_string) {
-    string::iterator new_end = unique(input_string.begin(), input_string.end(), [] (const char &x, const char &y) {
+vector<string> split_string(string input_string)
+{
+    string::iterator new_end = unique(input_string.begin(), input_string.end(), [](const char &x, const char &y) {
         return x == y and x == ' ';
     });
 
     input_string.erase(new_end, input_string.end());
 
-    while (input_string[input_string.length() - 1] == ' ') {
+    while (input_string[input_string.length() - 1] == ' ')
+    {
         input_string.pop_back();
     }
 
@@ -66,7 +71,8 @@ vector<string> split_string(string input_string) {
     size_t i = 0;
     size_t pos = input_string.find(delimiter);
 
-    while (pos != string::npos) {
+    while (pos != string::npos)
+    {
         splits.push_back(input_string.substr(i, pos - i));
 
         i = pos + 1;

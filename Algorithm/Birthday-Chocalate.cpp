@@ -7,28 +7,33 @@ string rtrim(const string &);
 vector<string> split(const string &);
 
 // Complete the birthday function below.
-int birthday(vector<int> s, int d, int m) {
+int birthday(vector<int> s, int d, int m)
+{
     int count = 0, n = 0;
 
-    for(int i = 0; i < s.size(); i++){
-        if(s[i] <= d){
+    for (int i = 0; i < s.size(); i++)
+    {
+        if (s[i] <= d)
+        {
             n = i + m;
             int sum = 0;
 
-            if(n <= s.size()){
-                for(int j = i; j < n; j++){
-                sum += s[j];
-                if(sum > d)
-                    break;
+            if (n <= s.size())
+            {
+                for (int j = i; j < n; j++)
+                {
+                    sum += s[j];
+                    if (sum > d)
+                        break;
                 }
 
-                if(sum == d) 
+                if (sum == d)
                     count++;
             }
             else
                 break;
         }
-        if(n > s.size())
+        if (n > s.size())
             break;
     }
 
@@ -51,7 +56,8 @@ int main()
 
     vector<int> s(n);
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
+    {
         int s_item = stoi(s_temp[i]);
 
         s[i] = s_item;
@@ -75,35 +81,37 @@ int main()
     return 0;
 }
 
-string ltrim(const string &str) {
+string ltrim(const string &str)
+{
     string s(str);
 
     s.erase(
         s.begin(),
-        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
-    );
+        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace))));
 
     return s;
 }
 
-string rtrim(const string &str) {
+string rtrim(const string &str)
+{
     string s(str);
 
     s.erase(
         find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
-        s.end()
-    );
+        s.end());
 
     return s;
 }
 
-vector<string> split(const string &str) {
+vector<string> split(const string &str)
+{
     vector<string> tokens;
 
     string::size_type start = 0;
     string::size_type end = 0;
 
-    while ((end = str.find(" ", start)) != string::npos) {
+    while ((end = str.find(" ", start)) != string::npos)
+    {
         tokens.push_back(str.substr(start, end - start));
 
         start = end + 1;
