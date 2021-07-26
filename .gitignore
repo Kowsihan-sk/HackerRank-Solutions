@@ -341,3 +341,9 @@ healthchecksdb
 
 *.exe
 *.json
+
+.stfolder/
+.stversions/
+.cph/
+.vscode/
+*.bin
